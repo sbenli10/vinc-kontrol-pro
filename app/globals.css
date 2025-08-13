@@ -1,0 +1,104 @@
+/* Tailwind v4 base */
+@import "tailwindcss";
+
+/* (İsteğe bağlı) animasyon paketini kullanıyorsan kalsın, yoksa sil
+@import "tw-animate-css";
+*/
+
+/* Dark varyant tanımı (Tailwind v4) */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+}
+
+/* ---- AÇIK TEMA (DEFAULT) ---- */
+:root {
+  --radius: 0.625rem;
+
+  /* Açık tema arka planını burada değiştir */
+  /* ör: açık gri: oklch(0.98 0 0) */
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.15 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+
+  /* Birincil/ikincil renkler */
+  --primary: oklch(0.35 0.05 260);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.25 0 0);
+
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.96 0 0);
+  --accent-foreground: oklch(0.25 0 0);
+
+  --destructive: oklch(0.65 0.25 25);
+  --border: oklch(0.92 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.70 0 0);
+}
+
+/* ---- KOYU TEMA ---- */
+.dark {
+  /* Koyu arka planı burada değiştir (daha koyu istersen 0.12–0.16 arası bir L değeri iyi) */
+  --background: oklch(0.14 0 0);        /* neredeyse siyah */
+  --foreground: oklch(0.98 0 0);        /* beyaza yakın */
+
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+
+  --primary: oklch(0.78 0.18 260);
+  --primary-foreground: oklch(0.14 0 0);
+
+  --secondary: oklch(0.26 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.26 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+
+  --accent: oklch(0.26 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.70 0.19 22);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.58 0 0);
+}
+
+/* Base katman: temadaki değişkenleri Tailwind sınıflarına bağlar */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
